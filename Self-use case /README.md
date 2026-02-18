@@ -9,88 +9,26 @@ After a production deployment, the application becomes unstable due to process d
 ## APPROACH
 
 ### Phase 1: Initial Setup
-
-- Define application name  
-- Define expected port  
-- Define expected user/group  
-- Define configuration file location  
-- Define log file location  
-- Initialize logging mechanism  
-- Define structured exit codes  
-
----
+Define application name, expected port, expected user/group, configuration file location, log file location, structured exit codes, logging mechanism.
 
 ### Phase 2: Process Check
-
-- Verify application is running  
-- Ensure only one instance is active  
-- If not running → Fail deployment  
-
----
+Verify application is running, and ensure only one instance is active. If not running → Fail deployment.
 
 ### Phase 3: Port Check
-
-- Confirm expected port is bound  
-- Ensure correct process owns the port  
-- If port conflict detected → Fail deployment  
-
----
+Confirm expected port is bound and ensure correct process owns the port. If port conflict detected → Fail deployment.
 
 ### Phase 4: Configuration Check
-
-- Compare active configuration with baseline  
-- If mismatch detected → Restore backup  
-
----
+Compare active configuration with baseline. If mismatch detected → Restore backup.
 
 ### Phase 5: Permission Check
-
-- Scan application directory  
-- Validate file ownership  
-- Correct ownership mismatches  
-
----
+Scan application directory, Validate file ownership and Correct ownership mismatches.
 
 ### Phase 6: Log Check
-
-- Count occurrences of:
-  - ERROR  
-  - TIMEOUT  
-  - CONNECTION_REFUSED  
-- If errors exceed threshold → Mark unstable  
-
----
+Count occurrences of ERROR, TIMEOUT and CONNECTION_REFUSED. If errors exceed threshold → Mark unstable.  
 
 ### Phase 7: Health Check
-
-- Call health endpoint using `curl`  
-- If HTTP 200 → Success  
-- Else → Fail deployment  
-
----
+Call health endpoint using `curl`. If HTTP 200 → Success, Else → Fail deployment. 
 
 ### Phase 8: Return Status
-
-- Exit 0 → Success  
-- Exit 1 → Failure  
-
----
-
-## WORKFLOW
-
-```
-Deployment Completed
-        ↓
-Run Validation Script
-        ↓
-System Checks
-        ↓
-Drift Detection
-        ↓
-Log Analysis
-        ↓
-Health Validation
-        ↓
-Return CI/CD Status
-```
+Exit 0 → Success, Exit 1 → Failure.
 
