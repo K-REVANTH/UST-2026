@@ -8,27 +8,26 @@ After a production deployment, the application becomes unstable due to process d
 
 ## APPROACH
 
-### Phase 1: Initial Setup
+### Initial Setup
 Define application name, expected port, expected user/group, configuration file location, log file location, structured exit codes, logging mechanism.
 
-### Phase 2: Process Check
+### Process Check
 Verify application is running, and ensure only one instance is active. If not running → Fail deployment.
 
-### Phase 3: Port Check
+### Port Check
 Confirm expected port is bound and ensure correct process owns the port. If port conflict detected → Fail deployment.
 
-### Phase 4: Configuration Check
+### Configuration Check
 Compare active configuration with baseline. If mismatch detected → Restore backup.
 
-### Phase 5: Permission Check
+### Permission Check
 Scan application directory, Validate file ownership and Correct ownership mismatches.
 
-### Phase 6: Log Check
+### Log Check
 Count occurrences of ERROR, TIMEOUT and CONNECTION_REFUSED. If errors exceed threshold → Mark unstable.  
 
-### Phase 7: Health Check
+### Health Check
 Call health endpoint using `curl`. If HTTP 200 → Success, Else → Fail deployment. 
 
-### Phase 8: Return Status
+### Return Status
 Exit 0 → Success, Exit 1 → Failure.
-
