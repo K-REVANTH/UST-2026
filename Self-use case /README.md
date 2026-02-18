@@ -17,12 +17,6 @@ Verify application is running, and ensure only one instance is active. If not ru
 ### Port Check
 Confirm expected port is bound and ensure correct process owns the port. If port conflict detected → Fail deployment.
 
-### Configuration Check
-Compare active configuration with baseline. If mismatch detected → Restore backup.
-
-### Permission Check
-Scan application directory, Validate file ownership and Correct ownership mismatches.
-
 ### Log Check
 Count occurrences of ERROR, TIMEOUT and CONNECTION_REFUSED. If errors exceed threshold → Mark unstable.  
 
